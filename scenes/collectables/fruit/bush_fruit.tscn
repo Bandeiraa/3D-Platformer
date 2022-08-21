@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/collectables/fruit/tree_fruit.tscn" type="PackedScene" id=1]
+
+[node name="BushFruit" instance=ExtResource( 1 )]
+collision_mask = 3
+
+[node name="CollectableArea" parent="." index="2"]
+value_type = 3
+
+[editable path="CollectableArea"]

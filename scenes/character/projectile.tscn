@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/player/projectile.gd" type="Script" id=1]
+[ext_resource path="res://assets/collectables/fruit/Red.material" type="Material" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+material = ExtResource( 2 )
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.119588
+
+[node name="Projectile" type="MeshInstance"]
+mesh = SubResource( 1 )
+material/0 = null
+script = ExtResource( 1 )
+damage = 10
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 11
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="ProjectileLifetime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area" to="." method="on_body_entered"]
+[connection signal="timeout" from="ProjectileLifetime" to="." method="on_projectile_lifetime_timeout"]

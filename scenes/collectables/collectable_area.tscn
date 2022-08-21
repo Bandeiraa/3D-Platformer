@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/objects/collectable_area.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=3]
+
+[node name="CollectableArea" type="Area"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="on_collectable_body_entered"]
